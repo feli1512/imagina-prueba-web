@@ -108,26 +108,50 @@
           <strong>acompañamiento profesional</strong> organizado en distintos frentes:
         </p>
       </div>
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-icon">🔍</div>
-          <h3>Evaluación de Altas Habilidades / Superdotación</h3>
-          <p>Evaluación psicopedagógica especializada para identificar altas capacidades en niños, niñas y adolescentes.</p>
+      <div class="services-map" id="servicesMap">
+        <div class="map-line" aria-hidden="true">
+          <svg viewBox="0 0 60 800" preserveAspectRatio="none">
+            <path d="M30,0 C0,60 60,120 30,180 S0,300 30,360 S60,480 30,540 S0,660 30,720 S60,780 30,800" />
+          </svg>
         </div>
-        <div class="service-card">
-          <div class="service-icon">👪</div>
-          <h3>Asesoramiento para familias y docentes</h3>
-          <p>Orientación para acompañar el desarrollo emocional y educativo de niños con altas capacidades.</p>
+        <div class="map-balloon" id="mapBalloon" aria-hidden="true">
+          <img src="images/imagina_balloon_icon.png" alt="" />
         </div>
-        <div class="service-card">
-          <div class="service-icon">🎓</div>
-          <h3>Capacitación en educación inclusiva</h3>
-          <p>Formación para instituciones y equipos docentes sobre inclusión y flexibilización educativa.</p>
+
+        <div class="map-stop" style="--marker-color: var(--yellow)">
+          <div class="map-marker">1</div>
+          <div class="service-card">
+            <div class="service-icon">🔍</div>
+            <h3>Evaluación de Altas Habilidades / Superdotación</h3>
+            <p>Evaluación psicopedagógica especializada para identificar altas capacidades en niños, niñas y adolescentes.</p>
+          </div>
         </div>
-        <div class="service-card">
-          <div class="service-icon">🤝</div>
-          <h3>Supervisión profesional para colegas</h3>
-          <p>Espacio de supervisión clínica y profesional para psicopedagogos y equipos de trabajo.</p>
+
+        <div class="map-stop" style="--marker-color: var(--teal)">
+          <div class="map-marker">2</div>
+          <div class="service-card">
+            <div class="service-icon">👪</div>
+            <h3>Asesoramiento para familias y docentes</h3>
+            <p>Orientación para acompañar el desarrollo emocional y educativo de niños con altas capacidades.</p>
+          </div>
+        </div>
+
+        <div class="map-stop" style="--marker-color: var(--orange-muted)">
+          <div class="map-marker">3</div>
+          <div class="service-card">
+            <div class="service-icon">🎓</div>
+            <h3>Capacitación en educación inclusiva</h3>
+            <p>Formación para instituciones y equipos docentes sobre inclusión y flexibilización educativa.</p>
+          </div>
+        </div>
+
+        <div class="map-stop" style="--marker-color: var(--sand)">
+          <div class="map-marker">4</div>
+          <div class="service-card">
+            <div class="service-icon">🤝</div>
+            <h3>Supervisión profesional para colegas</h3>
+            <p>Espacio de supervisión clínica y profesional para psicopedagogos y equipos de trabajo.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -186,6 +210,7 @@
 </footer>
 
 <script src="script.js"></script>
+<script src="services-map.js"></script>
 <script src="articles.js"></script>
 <script>renderArticlesPreview(3);</script>
 </body>
