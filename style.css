@@ -283,7 +283,7 @@ section {
 
 /* Services */
 .services {
-  background: white;
+  background: linear-gradient(180deg, var(--cream) 0%, var(--lavender) 100%);
 }
 
 .services-grid {
