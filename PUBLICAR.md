@@ -84,21 +84,17 @@ feed periódicamente) y manda el mail a los suscriptores solo.
   la que van a convivir a largo plazo — pero ese dominio **todavía no apunta a
   este sitio**. Hasta que se registre y se conecte (ver más abajo), el sitio solo
   es alcanzable en la URL de GitHub Pages de arriba.
-- **Falta únicamente**: crear la cuenta de Buttondown y conectar el feed. Sin eso,
-  publicar un artículo actualiza la web pero no manda ningún email todavía.
+- **Falta únicamente**: conectar el RSS-to-email dentro del panel de Buttondown
+  (paso 3 de abajo). Sin eso, publicar un artículo actualiza la web pero no
+  manda ningún email todavía.
 
 # Configuración de Buttondown (una sola vez)
 
-1. Crear cuenta gratuita en https://buttondown.com.
-2. Elegir un nombre de usuario (ej. `imagina-marianacarignani`) y reemplazarlo en
-   el formulario de suscripción de estas 3 páginas (buscar
-   `imagina-marianacarignani` y cambiarlo por el usuario real, aparece 2 veces
-   en cada una):
-   - `index.html`
-   - `articulos.html`
-   - `articulo.html`
-3. En el panel de Buttondown, ir a la configuración de **RSS-to-email** y pegar
-   ahí la URL donde el feed sea alcanzable **hoy**:
+1. ✅ Cuenta creada en https://buttondown.com.
+2. ✅ Usuario elegido: `imagina.uy` — ya está cargado en los 3 formularios de
+   suscripción (`index.html`, `articulos.html`, `articulo.html`).
+3. **Pendiente**: en el panel de Buttondown, ir a la configuración de
+   **RSS-to-email** y pegar ahí la URL donde el feed sea alcanzable **hoy**:
    `https://feli1512.github.io/imagina-prueba-web/rss.xml`
    (⚠️ no pegar `https://imagina.uy/rss.xml` todavía — ese dominio no resuelve a
    nada mientras no esté registrado y conectado).
