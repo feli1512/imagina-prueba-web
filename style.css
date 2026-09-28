@@ -591,6 +591,12 @@ section {
   padding: 12px 22px;
 }
 
+.subscribe-thanks {
+  margin: 0;
+  font-weight: 600;
+  color: var(--teal);
+}
+
 /* Articles list */
 .articles-list {
   padding-top: 20px;

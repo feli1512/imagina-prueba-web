@@ -52,17 +52,19 @@
           <h2>Desde IMAGINA a tu email</h2>
           <p>Ideas, evidencia y reflexiones para comprender mejor cómo aprendemos.</p>
         </div>
+        <iframe name="bd-hidden-list" style="display: none;" aria-hidden="true" title=""></iframe>
         <form
           action="https://buttondown.com/api/emails/embed-subscribe/imagina.uy"
           method="post"
-          target="popupwindow"
-          onsubmit="window.open('https://buttondown.com/imagina.uy', 'popupwindow')"
+          target="bd-hidden-list"
           class="subscribe-form"
+          data-thanks="subscribeThanksList"
         >
           <input type="email" name="email" id="bd-email" placeholder="tu@email.com" required />
           <input type="hidden" value="1" name="embed" />
           <button type="submit" class="btn btn-primary">Suscribirme</button>
         </form>
+        <p class="subscribe-thanks" id="subscribeThanksList" hidden>¡Gracias! Revisá tu email para confirmar la suscripción.</p>
       </div>
     </div>
   </section>

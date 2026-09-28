@@ -51,17 +51,19 @@
           <h2>¿Te gustó este artículo?</h2>
           <p>Suscribite para recibir los próximos en tu email.</p>
         </div>
+        <iframe name="bd-hidden-article" style="display: none;" aria-hidden="true" title=""></iframe>
         <form
           action="https://buttondown.com/api/emails/embed-subscribe/imagina.uy"
           method="post"
-          target="popupwindow"
-          onsubmit="window.open('https://buttondown.com/imagina.uy', 'popupwindow')"
+          target="bd-hidden-article"
           class="subscribe-form"
+          data-thanks="subscribeThanksArticle"
         >
           <input type="email" name="email" id="bd-email-2" placeholder="tu@email.com" required />
           <input type="hidden" value="1" name="embed" />
           <button type="submit" class="btn btn-primary">Suscribirme</button>
         </form>
+        <p class="subscribe-thanks" id="subscribeThanksArticle" hidden>¡Gracias! Revisá tu email para confirmar la suscripción.</p>
       </div>
     </div>
   </section>

@@ -53,3 +53,15 @@ navLinks.querySelectorAll("a").forEach((link) => {
   window.addEventListener("resize", onScroll);
   updateBalloon();
 })();
+
+// Suscripción a Buttondown sin abrir pestaña/ventana: el form apunta a un
+// iframe oculto, y acá mostramos un mensaje de agradecimiento propio.
+document.querySelectorAll(".subscribe-form").forEach((form) => {
+  form.addEventListener("submit", () => {
+    const thanks = document.getElementById(form.dataset.thanks);
+    setTimeout(() => {
+      form.hidden = true;
+      if (thanks) thanks.hidden = false;
+    }, 500);
+  });
+});
