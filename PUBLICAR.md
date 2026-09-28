@@ -75,12 +75,13 @@ git push
 Esto **no es automático** — ver la nota de abajo sobre por qué. Una vez que el
 artículo ya está publicado en la web:
 
-1. Entrar a https://buttondown.com y loguearse.
-2. Crear un email nuevo ("New email" / "Compose").
-3. Escribir un texto corto: título del artículo, 1-2 líneas de resumen, y el link
-   directo (`https://imagina.uy/articulo.html?slug=tu-slug`, o la URL de GitHub
-   Pages si el dominio todavía no está conectado).
-4. Enviarlo a todos los suscriptores.
+1. Abrir la Google Sheet de respuestas del formulario de suscripción → menú
+   **Extensiones → Apps Script**.
+2. En la función `enviarAviso`, editar `ASUNTO` y `CUERPO` con el título, un
+   resumen corto y el link directo (`https://imagina.uy/articulo.html?slug=tu-slug`,
+   o la URL de GitHub Pages si el dominio todavía no está conectado).
+3. Arriba del editor, elegir `enviarAviso` en el desplegable de funciones →
+   botón **Ejecutar (▶)**. Manda el mail a todos los emails de la hoja.
 
 Toma literalmente 2 minutos por artículo.
 
@@ -88,17 +89,38 @@ Toma literalmente 2 minutos por artículo.
 
 # Por qué el envío es manual y no automático
 
-Buttondown tiene una función de "RSS-to-email" que hace esto solo (detecta un
-artículo nuevo en `rss.xml` y manda el mail sin que nadie toque nada). El
-problema: **esa función es un complemento pago** (+$9/mes), y no está incluida en
-el plan gratuito. Mailchimp y MailerLite tienen la misma limitación en sus planes
-gratuitos. Se evaluó y se decidió no pagarlo por ahora — el envío manual (paso 5)
-cumple lo mismo con creces de trabajo, gratis.
+Se evaluaron Buttondown, Mailchimp y MailerLite para tener suscripción +
+notificación automática por email, pero los tres cobran (+$9/mes o similar) por
+la función de "avisar solo al publicar algo nuevo" en sus planes gratuitos. Se
+decidió no pagar por eso y armar el equivalente gratis con herramientas de
+Google: un Google Form (captura el email), una Google Sheet (guarda la lista) y
+un script de Google Apps Script (manda el mail de confirmación al suscribirse, y
+el aviso de artículo nuevo a mano cuando se publica algo). El costo de esto es
+que el aviso de "hay artículo nuevo" no sale solo — alguien tiene que apretar
+"Ejecutar" — pero toma 2 minutos y no depende de ningún servicio pago.
 
-Si en el futuro se quiere automatizar esto, las opciones son: pagar el
-complemento de Buttondown, o migrar a un servicio 100% gratuito como Blogtrottr
-(tiene publicidad en los emails salvo que se pague para sacarla, y la gente se
-suscribe desde blogtrottr.com en vez del formulario propio del sitio).
+# Sistema de suscripción (Google Form + Apps Script)
+
+- **Formulario**: `https://docs.google.com/forms/d/e/1FAIpQLSf7ktdU_nt_bHJPE6Hssg2Pkve2H6ifufruMVYyKSNsf1OWjg/viewform`
+  Una sola pregunta ("Email", validada como correo), respuestas volcadas a una
+  Google Sheet.
+- **Cómo se conecta el sitio**: los 3 formularios de suscripción
+  (`index.html`, `articulos.html`, `articulo.html`) envían un POST oculto (vía
+  un `<iframe>` invisible, sin abrir pestaña ni ventana) a
+  `https://docs.google.com/forms/d/e/1FAIpQLSf7ktdU_nt_bHJPE6Hssg2Pkve2H6ifufruMVYyKSNsf1OWjg/formResponse`,
+  con el campo `entry.1020811058` como email. Si en algún momento se rehace el
+  formulario de Google (no solo se edita el existente), estos IDs cambian y hay
+  que actualizar los 3 archivos HTML.
+- **Confirmación automática**: la Sheet tiene un script de Apps Script (menú
+  Extensiones → Apps Script) con dos funciones:
+  - `alSuscribirse`: instalada como activador ("Al enviarse el formulario"),
+    manda un mail de "¡Gracias por suscribirte!" apenas alguien completa el
+    formulario. No es doble opt-in real (no hay que clickear un link para
+    confirmar) — es solo un aviso de que la suscripción se registró.
+  - `enviarAviso`: se ejecuta a mano para avisar de un artículo nuevo (ver
+    paso 5 arriba).
+- **Bajas**: no hay botón de "darse de baja" automático. Si alguien pide salir
+  de la lista, hay que borrar su fila a mano de la Sheet.
 
 # Estado actual del sitio
 
@@ -109,9 +131,8 @@ suscribe desde blogtrottr.com en vez del formulario propio del sitio).
   la que van a convivir a largo plazo — pero ese dominio **todavía no apunta a
   este sitio**. Hasta que se registre y se conecte (ver más abajo), el sitio solo
   es alcanzable en la URL de GitHub Pages de arriba.
-- **Buttondown**: cuenta creada, usuario `imagina.uy`, ya cargado en los 3
-  formularios de suscripción (`index.html`, `articulos.html`, `articulo.html`).
-  El envío del aviso por email se hace a mano (ver paso 5 arriba).
+- **Suscripción**: Google Form + Sheet + Apps Script (ver sección de arriba). Ya
+  no se usa Buttondown.
 
 # Conectar el dominio imagina.uy (cuando esté registrado)
 

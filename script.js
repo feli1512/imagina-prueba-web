@@ -54,14 +54,12 @@ navLinks.querySelectorAll("a").forEach((link) => {
   updateBalloon();
 })();
 
-// Suscripción a Buttondown sin abrir pestaña/ventana: el form apunta a un
-// iframe oculto, y acá mostramos un mensaje de agradecimiento propio.
+// Suscripción sin abrir pestaña/ventana: el form apunta a un iframe oculto
+// (Google Forms), y acá mostramos un mensaje de agradecimiento propio.
 document.querySelectorAll(".subscribe-form").forEach((form) => {
   form.addEventListener("submit", () => {
     const thanks = document.getElementById(form.dataset.thanks);
-    setTimeout(() => {
-      form.hidden = true;
-      if (thanks) thanks.hidden = false;
-    }, 500);
+    form.hidden = true;
+    if (thanks) thanks.hidden = false;
   });
 });
