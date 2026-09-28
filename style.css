@@ -276,11 +276,16 @@ section {
   text-align: center;
 }
 
+.about-text h2 {
+  margin-bottom: 24px;
+}
+
 .about-text .lead {
   font-size: 1.1rem;
   color: var(--muted);
   max-width: 62ch;
-  margin: 0 auto 18px;
+  margin: 0 0 18px;
+  text-align: left;
 }
 
 /* Services */
