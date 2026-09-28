@@ -27,13 +27,15 @@ nombre de archivo (sin `.html`):
   "title": "Cómo hablar de altas capacidades con la escuela",
   "date": "2026-09-15",
   "excerpt": "Un resumen corto (1-2 líneas) que aparece en las tarjetas y en el mail.",
-  "cover": "images/como-hablar-articulo.jpg",
-  "contentFile": "articulos/content/como-hablar-de-altas-capacidades-con-la-escuela.html"
+  "cover": "/images/como-hablar-articulo.jpg",
+  "contentFile": "/articulos/content/como-hablar-de-altas-capacidades-con-la-escuela.html"
 }
 ```
 
 La fecha va en formato `AAAA-MM-DD`. El listado se ordena solo, del más nuevo al más
-viejo — no importa el orden en el archivo.
+viejo — no importa el orden en el archivo. Tanto `"cover"` como `"contentFile"` van
+con `/` adelante (ruta absoluta desde la raíz del sitio) — así funcionan igual desde
+cualquier página, sin importar en qué carpeta esté.
 
 El campo `"cover"` es opcional: si el artículo no tiene imagen de portada, se puede
 omitir directamente y la tarjeta/página se muestran solo con texto. Si se agrega una
@@ -52,7 +54,7 @@ orden), cambiando los datos:
 ```xml
 <item>
   <title>Cómo hablar de altas capacidades con la escuela</title>
-  <link>https://imagina.uy/articulo.html?slug=como-hablar-de-altas-capacidades-con-la-escuela</link>
+  <link>https://imagina.uy/articulo/?slug=como-hablar-de-altas-capacidades-con-la-escuela</link>
   <guid isPermaLink="false">imagina-como-hablar-de-altas-capacidades-con-la-escuela</guid>
   <pubDate>Tue, 15 Sep 2026 12:00:00 -0300</pubDate>
   <description>Un resumen corto (1-2 líneas) que aparece en las tarjetas y en el mail.</description>
@@ -77,9 +79,8 @@ artículo ya está publicado en la web:
 
 1. Abrir la Google Sheet de respuestas del formulario de suscripción → menú
    **Extensiones → Apps Script**.
-2. En la función `enviarAviso`, editar `ASUNTO` y `CUERPO` con el título, un
-   resumen corto y el link directo (`https://imagina.uy/articulo.html?slug=tu-slug`,
-   o la URL de GitHub Pages si el dominio todavía no está conectado).
+2. En la función `enviarAviso`, editar `TITULO`, `RESUMEN` y `SLUG` con los datos
+   del artículo — el link se arma solo (`https://imagina.uy/articulo/?slug=tu-slug`).
 3. Arriba del editor, elegir `enviarAviso` en el desplegable de funciones →
    botón **Ejecutar (▶)**. Manda el mail a todos los emails de la hoja.
 
@@ -105,8 +106,8 @@ que el aviso de "hay artículo nuevo" no sale solo — alguien tiene que apretar
   Una sola pregunta ("Email", validada como correo), respuestas volcadas a una
   Google Sheet.
 - **Cómo se conecta el sitio**: los 3 formularios de suscripción
-  (`index.html`, `articulos.html`, `articulo.html`) envían un POST oculto (vía
-  un `<iframe>` invisible, sin abrir pestaña ni ventana) a
+  (`index.html`, `articulos/index.html`, `articulo/index.html`) envían un POST
+  oculto (vía un `<iframe>` invisible, sin abrir pestaña ni ventana) a
   `https://docs.google.com/forms/d/e/1FAIpQLSf7ktdU_nt_bHJPE6Hssg2Pkve2H6ifufruMVYyKSNsf1OWjg/formResponse`,
   con el campo `entry.1020811058` como email. Si en algún momento se rehace el
   formulario de Google (no solo se edita el existente), estos IDs cambian y hay
@@ -125,24 +126,14 @@ que el aviso de "hay artículo nuevo" no sale solo — alguien tiene que apretar
 # Estado actual del sitio
 
 - **Publicado en GitHub Pages**, repo `feli1512/imagina-prueba-web`, rama `main`.
-  URL actual real: `https://feli1512.github.io/imagina-prueba-web/`.
-- **Dominio definitivo decidido**: `imagina.uy` (a registrar en Antel/NIC.COM.UY).
-  Los links dentro de `rss.xml` ya usan `https://imagina.uy` porque es la URL con
-  la que van a convivir a largo plazo — pero ese dominio **todavía no apunta a
-  este sitio**. Hasta que se registre y se conecte (ver más abajo), el sitio solo
-  es alcanzable en la URL de GitHub Pages de arriba.
+- **Dominio propio conectado**: `https://imagina.uy` (registrado en Antel/NIC.UY,
+  DNS apuntando a GitHub Pages, HTTPS activo). La URL vieja de GitHub Pages
+  (`https://feli1512.github.io/imagina-prueba-web/`) redirige sola a `imagina.uy`.
 - **Suscripción**: Google Form + Sheet + Apps Script (ver sección de arriba). Ya
   no se usa Buttondown.
-
-# Conectar el dominio imagina.uy (cuando esté registrado)
-
-1. En Antel/NIC.COM.UY, configurar el dominio para que delegue a GitHub (o
-   apuntar el DNS con un registro CNAME hacia `feli1512.github.io`, según lo que
-   permita el panel de Antel).
-2. En este repo, agregar un archivo `CNAME` (sin extensión) en la raíz, con una
-   sola línea: `imagina.uy`.
-3. En GitHub → **Settings → Pages**, cargar `imagina.uy` como dominio personalizado.
-4. Una vez que resuelva (puede tardar unas horas), listo — no hace falta tocar
-   nada más del código: como los links de `rss.xml` y de los formularios ya usan
-   URLs absolutas (`https://imagina.uy/...`), en cuanto el dominio esté conectado
-   todo queda apuntando bien solo.
+- **URLs limpias (sin `.html`)**: `articulos.html` y `articulo.html` pasaron a
+  ser `articulos/index.html` y `articulo/index.html`, así que en el navegador se
+  ven como `imagina.uy/articulos/` y `imagina.uy/articulo/?slug=...`. Por eso
+  todos los links internos y los fetch de `articles.js` usan rutas absolutas
+  (`/style.css`, `/articulos/`, etc.) en vez de relativas — así funcionan igual
+  sin importar desde qué carpeta se sirve la página.

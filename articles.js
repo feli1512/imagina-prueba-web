@@ -1,4 +1,4 @@
-const ARTICLES_INDEX = "data/articles.json";
+const ARTICLES_INDEX = "/data/articles.json";
 
 function formatDate(dateStr) {
   const date = new Date(dateStr + "T00:00:00");
@@ -13,7 +13,7 @@ async function fetchArticles() {
 
 function buildArticleCard(article) {
   const card = document.createElement("a");
-  card.href = `articulo.html?slug=${encodeURIComponent(article.slug)}`;
+  card.href = `/articulo/?slug=${encodeURIComponent(article.slug)}`;
   card.className = "article-card";
   const coverHTML = article.cover
     ? `<img src="${article.cover}" alt="" class="article-card-cover" loading="lazy" />`
@@ -80,7 +80,7 @@ async function renderArticle() {
 
   if (!slug) {
     titleEl.textContent = "Artículo no encontrado";
-    bodyEl.innerHTML = "<p>Volvé al <a href=\"articulos.html\">listado de artículos</a>.</p>";
+    bodyEl.innerHTML = "<p>Volvé al <a href=\"/articulos/\">listado de artículos</a>.</p>";
     return;
   }
 
@@ -90,7 +90,7 @@ async function renderArticle() {
 
     if (!article) {
       titleEl.textContent = "Artículo no encontrado";
-      bodyEl.innerHTML = "<p>Volvé al <a href=\"articulos.html\">listado de artículos</a>.</p>";
+      bodyEl.innerHTML = "<p>Volvé al <a href=\"/articulos/\">listado de artículos</a>.</p>";
       return;
     }
 
