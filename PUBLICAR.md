@@ -43,9 +43,11 @@ alcanza con ~1000-1600px de ancho y buena compresión JPEG.
 
 ## 3. Agregar el `<item>` en rss.xml
 
-Esto es lo que dispara el email automático a los suscriptores. Copiar el bloque
-`<item>` existente y pegarlo debajo (o arriba, no importa el orden), cambiando los
-datos:
+Este archivo ya no dispara ningún envío automático (ver nota más abajo sobre por
+qué), pero conviene mantenerlo igual: es el feed que cualquiera puede seguir desde
+un lector de RSS, y es el que aparece linkeado en el `<head>` de cada página.
+Copiar el bloque `<item>` existente y pegarlo debajo (o arriba, no importa el
+orden), cambiando los datos:
 
 ```xml
 <item>
@@ -59,8 +61,6 @@ datos:
 
 - `guid` tiene que ser único para cada artículo (usar el slug alcanza).
 - `pubDate` en formato RFC 822 (día de semana, día, mes, año, hora, huso horario).
-- Si el `guid` no cambia, Buttondown no vuelve a mandar el mail — así que ojo si
-  editás un artículo viejo: no toques su `guid` a menos que quieras que se reenvíe.
 
 ## 4. Subir los cambios
 
@@ -70,10 +70,35 @@ git commit -m "Publicar: Cómo hablar de altas capacidades con la escuela"
 git push
 ```
 
-Apenas se actualiza `rss.xml` en el sitio publicado, Buttondown lo detecta (revisa el
-feed periódicamente) y manda el mail a los suscriptores solo.
+## 5. Avisar por email a los suscriptores (a mano)
+
+Esto **no es automático** — ver la nota de abajo sobre por qué. Una vez que el
+artículo ya está publicado en la web:
+
+1. Entrar a https://buttondown.com y loguearse.
+2. Crear un email nuevo ("New email" / "Compose").
+3. Escribir un texto corto: título del artículo, 1-2 líneas de resumen, y el link
+   directo (`https://imagina.uy/articulo.html?slug=tu-slug`, o la URL de GitHub
+   Pages si el dominio todavía no está conectado).
+4. Enviarlo a todos los suscriptores.
+
+Toma literalmente 2 minutos por artículo.
 
 ---
+
+# Por qué el envío es manual y no automático
+
+Buttondown tiene una función de "RSS-to-email" que hace esto solo (detecta un
+artículo nuevo en `rss.xml` y manda el mail sin que nadie toque nada). El
+problema: **esa función es un complemento pago** (+$9/mes), y no está incluida en
+el plan gratuito. Mailchimp y MailerLite tienen la misma limitación en sus planes
+gratuitos. Se evaluó y se decidió no pagarlo por ahora — el envío manual (paso 5)
+cumple lo mismo con creces de trabajo, gratis.
+
+Si en el futuro se quiere automatizar esto, las opciones son: pagar el
+complemento de Buttondown, o migrar a un servicio 100% gratuito como Blogtrottr
+(tiene publicidad en los emails salvo que se pague para sacarla, y la gente se
+suscribe desde blogtrottr.com en vez del formulario propio del sitio).
 
 # Estado actual del sitio
 
@@ -84,23 +109,9 @@ feed periódicamente) y manda el mail a los suscriptores solo.
   la que van a convivir a largo plazo — pero ese dominio **todavía no apunta a
   este sitio**. Hasta que se registre y se conecte (ver más abajo), el sitio solo
   es alcanzable en la URL de GitHub Pages de arriba.
-- **Falta únicamente**: conectar el RSS-to-email dentro del panel de Buttondown
-  (paso 3 de abajo). Sin eso, publicar un artículo actualiza la web pero no
-  manda ningún email todavía.
-
-# Configuración de Buttondown (una sola vez)
-
-1. ✅ Cuenta creada en https://buttondown.com.
-2. ✅ Usuario elegido: `imagina.uy` — ya está cargado en los 3 formularios de
-   suscripción (`index.html`, `articulos.html`, `articulo.html`).
-3. **Pendiente**: en el panel de Buttondown, ir a la configuración de
-   **RSS-to-email** y pegar ahí la URL donde el feed sea alcanzable **hoy**:
-   `https://feli1512.github.io/imagina-prueba-web/rss.xml`
-   (⚠️ no pegar `https://imagina.uy/rss.xml` todavía — ese dominio no resuelve a
-   nada mientras no esté registrado y conectado).
-4. El día que `imagina.uy` esté registrado y apuntando a este sitio (ver abajo),
-   volver a esta configuración de Buttondown y cambiar la URL del feed a
-   `https://imagina.uy/rss.xml`.
+- **Buttondown**: cuenta creada, usuario `imagina.uy`, ya cargado en los 3
+  formularios de suscripción (`index.html`, `articulos.html`, `articulo.html`).
+  El envío del aviso por email se hace a mano (ver paso 5 arriba).
 
 # Conectar el dominio imagina.uy (cuando esté registrado)
 
@@ -110,9 +121,7 @@ feed periódicamente) y manda el mail a los suscriptores solo.
 2. En este repo, agregar un archivo `CNAME` (sin extensión) en la raíz, con una
    sola línea: `imagina.uy`.
 3. En GitHub → **Settings → Pages**, cargar `imagina.uy` como dominio personalizado.
-4. Una vez que resuelva (puede tardar unas horas), actualizar en Buttondown la
-   URL del feed RSS-to-email a `https://imagina.uy/rss.xml` (paso 4 de arriba).
-
-No hace falta tocar nada más del código: como los links de `rss.xml` y de los
-formularios ya usan URLs absolutas, en cuanto el dominio esté conectado todo
-queda apuntando bien solo.
+4. Una vez que resuelva (puede tardar unas horas), listo — no hace falta tocar
+   nada más del código: como los links de `rss.xml` y de los formularios ya usan
+   URLs absolutas (`https://imagina.uy/...`), en cuanto el dominio esté conectado
+   todo queda apuntando bien solo.
