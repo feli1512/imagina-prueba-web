@@ -50,7 +50,7 @@ datos:
 ```xml
 <item>
   <title>Cómo hablar de altas capacidades con la escuela</title>
-  <link>https://TU-DOMINIO.example/articulo.html?slug=como-hablar-de-altas-capacidades-con-la-escuela</link>
+  <link>https://imagina.uy/articulo.html?slug=como-hablar-de-altas-capacidades-con-la-escuela</link>
   <guid isPermaLink="false">imagina-como-hablar-de-altas-capacidades-con-la-escuela</guid>
   <pubDate>Tue, 15 Sep 2026 12:00:00 -0300</pubDate>
   <description>Un resumen corto (1-2 líneas) que aparece en las tarjetas y en el mail.</description>
@@ -75,20 +75,48 @@ feed periódicamente) y manda el mail a los suscriptores solo.
 
 ---
 
+# Estado actual del sitio
+
+- **Publicado en GitHub Pages**, repo `feli1512/imagina-prueba-web`, rama `main`.
+  URL actual real: `https://feli1512.github.io/imagina-prueba-web/`.
+- **Dominio definitivo decidido**: `imagina.uy` (a registrar en Antel/NIC.COM.UY).
+  Los links dentro de `rss.xml` ya usan `https://imagina.uy` porque es la URL con
+  la que van a convivir a largo plazo — pero ese dominio **todavía no apunta a
+  este sitio**. Hasta que se registre y se conecte (ver más abajo), el sitio solo
+  es alcanzable en la URL de GitHub Pages de arriba.
+- **Falta únicamente**: crear la cuenta de Buttondown y conectar el feed. Sin eso,
+  publicar un artículo actualiza la web pero no manda ningún email todavía.
+
 # Configuración de Buttondown (una sola vez)
 
 1. Crear cuenta gratuita en https://buttondown.com.
-2. Elegir un nombre de usuario (ej. `imagina-marianacarignani`) y reemplazarlo en:
-   - `articulos.html` (formulario de suscripción)
-   - `articulo.html` (formulario de suscripción)
-3. En el panel de Buttondown, ir a la configuración de **RSS-to-email** y pegar la
-   URL pública de `rss.xml` una vez el sitio esté publicado
-   (ej. `https://tu-usuario.github.io/imagina-web/rss.xml`).
-4. Reemplazar `https://TU-DOMINIO.example` por esa misma URL real en todo `rss.xml`.
+2. Elegir un nombre de usuario (ej. `imagina-marianacarignani`) y reemplazarlo en
+   el formulario de suscripción de estas 3 páginas (buscar
+   `imagina-marianacarignani` y cambiarlo por el usuario real, aparece 2 veces
+   en cada una):
+   - `index.html`
+   - `articulos.html`
+   - `articulo.html`
+3. En el panel de Buttondown, ir a la configuración de **RSS-to-email** y pegar
+   ahí la URL donde el feed sea alcanzable **hoy**:
+   `https://feli1512.github.io/imagina-prueba-web/rss.xml`
+   (⚠️ no pegar `https://imagina.uy/rss.xml` todavía — ese dominio no resuelve a
+   nada mientras no esté registrado y conectado).
+4. El día que `imagina.uy` esté registrado y apuntando a este sitio (ver abajo),
+   volver a esta configuración de Buttondown y cambiar la URL del feed a
+   `https://imagina.uy/rss.xml`.
 
-# Publicar el sitio en GitHub Pages
+# Conectar el dominio imagina.uy (cuando esté registrado)
 
-1. Crear un repositorio en GitHub y subir esta carpeta.
-2. En **Settings → Pages**, elegir la rama `main` (o `master`) como fuente.
-3. GitHub va a dar una URL tipo `https://tu-usuario.github.io/nombre-del-repo/`. Esa
-   es la URL a usar en el paso 3 de Buttondown y en `rss.xml`.
+1. En Antel/NIC.COM.UY, configurar el dominio para que delegue a GitHub (o
+   apuntar el DNS con un registro CNAME hacia `feli1512.github.io`, según lo que
+   permita el panel de Antel).
+2. En este repo, agregar un archivo `CNAME` (sin extensión) en la raíz, con una
+   sola línea: `imagina.uy`.
+3. En GitHub → **Settings → Pages**, cargar `imagina.uy` como dominio personalizado.
+4. Una vez que resuelva (puede tardar unas horas), actualizar en Buttondown la
+   URL del feed RSS-to-email a `https://imagina.uy/rss.xml` (paso 4 de arriba).
+
+No hace falta tocar nada más del código: como los links de `rss.xml` y de los
+formularios ya usan URLs absolutas, en cuanto el dominio esté conectado todo
+queda apuntando bien solo.

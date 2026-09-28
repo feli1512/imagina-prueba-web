@@ -2,20 +2,22 @@
 <!--
   Feed RSS de los artículos de Imagina (Mariana Carignani).
 
-  IMPORTANTE: reemplazar https://TU-DOMINIO.example en todo este archivo por la URL
-  real del sitio una vez publicado (ver PUBLICAR.md). Buttondown usa este feed para
-  detectar artículos nuevos y enviar el aviso a los suscriptores.
+  Los links de este archivo usan https://imagina.uy, el dominio definitivo del
+  sitio (ver PUBLICAR.md). OJO: hasta que ese dominio esté registrado y
+  apuntando a este sitio, la URL que hay que cargar en Buttondown (RSS-to-email)
+  es la real donde el sitio vive HOY (por ahora, GitHub Pages), no imagina.uy.
 -->
+
 <rss version="2.0">
   <channel>
     <title>Imagina - Artículos de Mariana Carignani</title>
-    <link>https://TU-DOMINIO.example/articulos.html</link>
+    <link>https://imagina.uy/articulos.html</link>
     <description>Ideas, preguntas y evidencia: contenidos para pensar el aprendizaje, el desarrollo y la educación desde una mirada psicopedagógica, basada en evidencia.</description>
     <language>es-uy</language>
 
     <item>
       <title>¿Qué son las Altas Habilidades/Superdotación?</title>
-      <link>https://TU-DOMINIO.example/articulo.html?slug=que-son-las-altas-capacidades</link>
+      <link>https://imagina.uy/articulo.html?slug=que-son-las-altas-capacidades</link>
       <guid isPermaLink="false">imagina-que-son-las-altas-capacidades</guid>
       <pubDate>Mon, 31 Aug 2026 12:00:00 -0300</pubDate>
       <description>Una introducción a qué significa tener Altas Habilidades/Superdotación, cómo se detectan y por qué el acompañamiento temprano hace la diferencia.</description>
