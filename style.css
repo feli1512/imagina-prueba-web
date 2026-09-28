@@ -117,7 +117,8 @@ header {
   padding: 64px 0 40px;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.55) 100%),
-    url("images/cielo-hero-index.jpg") center bottom / cover no-repeat;
+    url("images/cielo-hero-index.jpg") center / cover no-repeat;
+  background-attachment: scroll, fixed;
 }
 
 .hero .container {
@@ -272,7 +273,10 @@ section {
 
 /* About */
 .about {
-  background: var(--lavender);
+  background:
+    linear-gradient(180deg, rgba(222, 224, 242, 0.8) 0%, rgba(222, 224, 242, 0.88) 100%),
+    url("images/cielo-hero-index.jpg") center / cover no-repeat;
+  background-attachment: scroll, fixed;
   text-align: center;
 }
 
