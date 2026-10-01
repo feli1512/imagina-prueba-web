@@ -5,5 +5,12 @@
     "date": "2026-08-31",
     "excerpt": "Una introducción a qué significa tener Altas Habilidades/Superdotación, cómo se detectan y por qué el acompañamiento temprano hace la diferencia.",
     "contentFile": "/articulos/content/que-son-las-altas-capacidades.html"
+  },
+  {
+    "slug": "trastorno-del-desarrollo-del-lenguaje",
+    "title": "¿Qué es el Trastorno del Desarrollo del Lenguaje (TDL)?",
+    "date": "2026-09-30",
+    "excerpt": "Qué es el TDL, en qué se diferencia de \"hablar tarde\" o de las dificultades del habla, y qué puede hacer la escuela y la familia para acompañarlo.",
+    "contentFile": "/articulos/content/trastorno-del-desarrollo-del-lenguaje.html"
   }
 ]
