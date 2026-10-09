@@ -16,6 +16,65 @@ Adentro va solo el cuerpo del artículo, con tags simples: `<p>`, `<h2>`, `<stro
 `<a href="...">`. Mirá `articulos/content/que-son-las-altas-capacidades.html` como
 ejemplo. No hace falta `<html>`, `<head>` ni `<body>` — eso ya lo pone la plantilla.
 
+### Recuadros y componentes visuales disponibles
+
+Además de los tags simples, hay clases CSS ya armadas (con los colores de la marca)
+para darle más variedad visual a un artículo. Mirá
+`articulos/content/que-es-la-dislexia.html` como ejemplo real de uso. Las principales:
+
+- `<p class="lead">...</p>` — párrafo de entrada, más grande, con borde amarillo.
+- `<div class="statement"><p>...</p></div>` — frase destacada en recuadro oscuro
+  (usar `<em>` adentro para resaltar una palabra en amarillo).
+- `<ul class="pill-list"><li>...</li></ul>` — lista de "píldoras" rosa con ✕, para
+  listar cosas que algo NO es.
+- `<div class="card-grid"><div class="card">...</div><div class="card alt">...</div></div>`
+  — dos tarjetas lado a lado (la segunda con `alt` queda en amarillo en vez de
+  celeste), cada una con un `<h3>` y una `<ul>` con viñetas redondas.
+- `<div class="box"><h3>...</h3><p>...</p></div>` — recuadro lavanda suave, para
+  una aclaración o nota aparte.
+- `<div class="callout-question"><strong>...</strong></div>` — recuadro con borde,
+  para una respuesta corta y directa ("No.", "Sí.", etc.). Agregar la clase
+  `negative` para la variante en rosa/rojo (ej. para marcar una frase incorrecta).
+- `<div class="warning"><strong>Importante:</strong> ...</div>` — aviso en rosa con
+  borde rojo, para aclaraciones importantes.
+- `<div class="pull-quote">...<span>no</span>...</div>` — cita grande centrada con
+  líneas arriba y abajo (usar `<span>` para resaltar una palabra en rojo).
+
+### Documentos descargables (PDF, checklists, etc.) con suscripción
+
+Si el artículo tiene un documento para descargar, no se linkea directo: se pide el
+mail primero (se suscribe a la lista) y recién ahí aparece el botón de descarga.
+Esto es automático, ya está armado en `script.js` — solo hay que usar este HTML:
+
+```html
+<div class="resources">
+  <h3>Recursos gratuitos</h3>
+  <div class="resource-grid">
+    <div class="resource-card" data-download="/recursos/nombre-del-archivo.pdf" data-download-label="Descargar nombre del archivo">
+      <span class="resource-tag">Para familias</span>
+      <h4>Título del recurso</h4>
+      <p>Descripción corta.</p>
+      <form class="resource-gate">
+        <input type="email" placeholder="tu@email.com" required />
+        <button type="submit">Suscribirme y descargar</button>
+      </form>
+    </div>
+  </div>
+</div>
+```
+
+- El PDF va subido en la carpeta `recursos/` del repo (crearla si no existe), con
+  nombre descriptivo en minúsculas y guiones (sin espacios).
+- `data-download` es la ruta al PDF (con `/` adelante). `data-download-label` es el
+  texto que va a tener el botón una vez que aparece.
+- Para que la tarjeta quede en amarillo en vez de celeste (como la de "Para
+  docentes" en el ejemplo de dislexia), agregar la clase `doc`:
+  `<div class="resource-card doc" ...>`.
+- Esto es un filtro "blando": junta el mail de quien quiere el documento (y lo
+  suscribe), pero no es una traba de seguridad real — alguien que busque el link
+  del PDF directamente en el código igual podría acceder. Para el uso que le
+  estamos dando (captar suscriptores a cambio de material gratuito) alcanza.
+
 ## 2. Agregar la entrada en data/articles.json
 
 Sumar un objeto nuevo al principio o al final del array, con el mismo `slug` que el

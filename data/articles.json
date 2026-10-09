@@ -12,5 +12,12 @@
     "date": "2026-09-30",
     "excerpt": "Qué es el TDL, en qué se diferencia de \"hablar tarde\" o de las dificultades del habla, y qué puede hacer la escuela y la familia para acompañarlo.",
     "contentFile": "/articulos/content/trastorno-del-desarrollo-del-lenguaje.html"
+  },
+  {
+    "slug": "que-es-la-dislexia",
+    "title": "¿Qué es la dislexia?",
+    "date": "2026-10-09",
+    "excerpt": "Qué es la dislexia, cómo puede manifestarse, cómo se identifica y qué pueden hacer la familia y la escuela para acompañarla.",
+    "contentFile": "/articulos/content/que-es-la-dislexia.html"
   }
 ]
