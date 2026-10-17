@@ -1,14 +1,20 @@
 async function renderResenas() {
   const grid = document.getElementById("resenasGrid");
   const section = document.getElementById("resenas");
+  const navLink = document.querySelector('.nav-links a[href="#resenas"]');
   if (!grid) return;
+
+  function ocultarSeccion() {
+    if (section) section.hidden = true;
+    if (navLink) navLink.closest("li").hidden = true;
+  }
 
   try {
     const res = await fetch("/data/resenas.json");
     const resenas = await res.json();
 
     if (!resenas.length) {
-      if (section) section.hidden = true;
+      ocultarSeccion();
       return;
     }
 
@@ -26,7 +32,7 @@ async function renderResenas() {
       grid.appendChild(card);
     });
   } catch (err) {
-    if (section) section.hidden = true;
+    ocultarSeccion();
     console.error(err);
   }
 }
