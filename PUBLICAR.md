@@ -252,9 +252,8 @@ vez en cuando.
 - **Suscripción**: Google Form + Sheet + Apps Script (ver sección de arriba). Ya
   no se usa Buttondown.
 - **Reseñas**: sección en el Inicio, publicación manual y curada desde
-  `data/resenas.json` (ver sección de arriba). El Google Form de recolección
-  todavía no está creado — el botón "Dejar una reseña" tiene un link de
-  placeholder (`href="#"`) hasta que se configure.
+  `data/resenas.json` (ver sección de arriba). Formulario de recolección:
+  `https://docs.google.com/forms/d/e/1FAIpQLSd4X3twX1_MydXIKV9vudqaJ8reJtI56aGtHLJNTFr0xqJRFw/viewform`.
 - **URLs limpias (sin `.html`)**: `articulos.html` y `articulo.html` pasaron a
   ser `articulos/index.html` y `articulo/index.html`, así que en el navegador se
   ven como `imagina.uy/articulos/` y `imagina.uy/articulo/?slug=...`. Por eso
