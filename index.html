@@ -28,6 +28,7 @@
     <ul class="nav-links" id="navLinks">
       <li><a href="#inicio">Inicio</a></li>
       <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#resenas">Reseñas</a></li>
       <li><a href="/articulos/">Artículos</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
@@ -186,6 +187,21 @@
     </div>
   </section>
 
+  <section class="reviews" id="resenas">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Reseñas</span>
+        <h2>Lo que dicen de Imagina</h2>
+        <p>Comentarios de familias, docentes y colegas que trabajaron con Mariana.</p>
+      </div>
+      <div class="reviews-grid" id="resenasGrid"></div>
+      <div class="reviews-cta">
+        <!-- Reemplazar href por el link real del Google Form de reseñas (ver PUBLICAR.md) -->
+        <a href="#" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Dejar una reseña</a>
+      </div>
+    </div>
+  </section>
+
   <section class="contact" id="contacto">
     <div class="container">
       <div class="contact-card">
@@ -228,6 +244,10 @@
 <script src="script.js"></script>
 <script src="services-map.js"></script>
 <script src="articles.js"></script>
-<script>renderArticlesPreview(3);</script>
+<script src="resenas.js"></script>
+<script>
+  renderArticlesPreview(3);
+  renderResenas();
+</script>
 </body>
 </html>

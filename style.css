@@ -666,6 +666,66 @@ section {
   padding: 40px 0;
 }
 
+/* Reviews */
+.reviews {
+  background: linear-gradient(180deg, var(--cream) 0%, rgba(242, 204, 141, 0.3) 100%);
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.review-card {
+  position: relative;
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 30px 28px 26px;
+  border-top: 5px solid var(--yellow);
+}
+
+.review-quote-mark {
+  display: block;
+  font-family: "Nunito", sans-serif;
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--yellow);
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.review-text {
+  color: var(--ink);
+  font-size: 1rem;
+  margin: 0 0 20px;
+}
+
+.review-author {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.review-name {
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.review-role {
+  color: var(--teal-dark);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.reviews-cta {
+  text-align: center;
+  margin-top: 36px;
+}
+
 /* Single article page */
 .article-page {
   padding: 48px 0 20px;

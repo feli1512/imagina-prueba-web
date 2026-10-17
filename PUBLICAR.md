@@ -182,6 +182,67 @@ que el aviso de "hay artículo nuevo" no sale solo — alguien tiene que apretar
 - **Bajas**: no hay botón de "darse de baja" automático. Si alguien pide salir
   de la lista, hay que borrar su fila a mano de la Sheet.
 
+# Reseñas (Inicio → "Lo que dicen de Imagina")
+
+La sección de reseñas del Inicio **no publica nada sola** — es un paso manual y
+curado, igual que los artículos, para evitar que se publique algo sin que Mariana
+lo revise antes (reseña falsa, comentario de mala fe, un dato personal puesto sin
+pensar, etc.).
+
+## Cómo funciona
+
+1. Alguien hace click en el botón **"Dejar una reseña"** del Inicio, que lleva a
+   un Google Form (Nombre, Rol, Email — privado, no se publica — y Comentario).
+2. Las respuestas caen en una Google Sheet. Mariana las revisa de vez en cuando y
+   elige cuáles publicar.
+3. Para publicar una reseña elegida, agregar un objeto al array de
+   `data/resenas.json`:
+
+```json
+{
+  "nombre": "Nombre Apellido",
+  "rol": "Madre de familia",
+  "comentario": "El texto de la reseña, tal cual lo escribió la persona (se puede acortar un poco si es muy largo)."
+}
+```
+
+4. Subir con `git add data/resenas.json`, `git commit`, `git push` — igual que
+   cualquier otro cambio.
+
+El orden en que aparecen en el sitio es el mismo orden del array (no se ordenan
+solas por fecha como los artículos) — para poner una nueva primera, agregarla al
+principio del array.
+
+Si el array está vacío (`[]`, como arranca el sitio), la sección entera queda
+oculta automáticamente — no hace falta tocar nada más para "esconderla" mientras
+no haya reseñas todavía.
+
+## Configurar el Google Form de reseñas (una sola vez)
+
+Mismo procedimiento que el formulario de suscripción (ver más abajo), pero con un
+Form nuevo y separado, con 4 preguntas:
+
+1. **Nombre** (respuesta corta, obligatoria).
+2. **Rol** (respuesta corta, obligatoria) — ej. "Madre", "Docente", "Colega
+   psicóloga". Se puede dejar como texto libre o, si se prefiere, convertir en
+   "Selección múltiple" con las opciones más comunes y "Agregar otra opción".
+3. **Email** (respuesta corta, validación tipo Correo, obligatoria) — no se
+   publica, es solo para que Mariana pueda responder o confirmar algo si hace
+   falta.
+4. **Comentario** (párrafo, obligatoria).
+
+Una vez creado:
+
+1. Pestaña **Respuestas** → ícono de Sheets → crear una hoja de cálculo nueva.
+2. Botón **Enviar** → pestaña del link (🔗) → copiar la URL (`.../viewform`).
+3. En `index.html`, buscar el botón "Dejar una reseña" (dentro de
+   `<section class="reviews" id="resenas">`) y reemplazar el `href="#"` por esa
+   URL.
+
+No hace falta conectar Apps Script a esta Sheet — a diferencia de la suscripción,
+acá no se manda ningún mail automático: Mariana simplemente revisa la Sheet de
+vez en cuando.
+
 # Estado actual del sitio
 
 - **Publicado en GitHub Pages**, repo `feli1512/imagina-prueba-web`, rama `main`.
@@ -190,6 +251,10 @@ que el aviso de "hay artículo nuevo" no sale solo — alguien tiene que apretar
   (`https://feli1512.github.io/imagina-prueba-web/`) redirige sola a `imagina.uy`.
 - **Suscripción**: Google Form + Sheet + Apps Script (ver sección de arriba). Ya
   no se usa Buttondown.
+- **Reseñas**: sección en el Inicio, publicación manual y curada desde
+  `data/resenas.json` (ver sección de arriba). El Google Form de recolección
+  todavía no está creado — el botón "Dejar una reseña" tiene un link de
+  placeholder (`href="#"`) hasta que se configure.
 - **URLs limpias (sin `.html`)**: `articulos.html` y `articulo.html` pasaron a
   ser `articulos/index.html` y `articulo/index.html`, así que en el navegador se
   ven como `imagina.uy/articulos/` y `imagina.uy/articulo/?slug=...`. Por eso
