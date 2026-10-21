@@ -647,6 +647,10 @@ section {
   margin: 10px 0 8px;
 }
 
+.article-card h3 strong {
+  font-weight: 800;
+}
+
 .article-card p {
   color: var(--muted);
   font-size: 0.95rem;
@@ -745,6 +749,10 @@ section {
 .article-page h1 {
   font-size: 2rem;
   margin: 10px 0 24px;
+}
+
+.article-page h1 strong {
+  font-weight: 800;
 }
 
 .article-cover {

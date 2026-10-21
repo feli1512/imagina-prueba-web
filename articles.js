@@ -94,9 +94,10 @@ async function renderArticle() {
       return;
     }
 
-    document.title = `${article.title} | Imagina - Mariana Carignani`;
+    const tituloPlano = article.title.replace(/<[^>]*>/g, "");
+    document.title = `${tituloPlano} | Imagina - Mariana Carignani`;
     document.getElementById("pageDescription").setAttribute("content", article.excerpt);
-    titleEl.textContent = article.title;
+    titleEl.innerHTML = article.title;
     dateEl.textContent = formatDate(article.date);
 
     if (article.cover && coverEl) {
