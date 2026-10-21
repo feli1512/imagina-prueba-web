@@ -39,6 +39,21 @@ para darle más variedad visual a un artículo. Mirá
   borde rojo, para aclaraciones importantes.
 - `<div class="pull-quote">...<span>no</span>...</div>` — cita grande centrada con
   líneas arriba y abajo (usar `<span>` para resaltar una palabra en rojo).
+- `<div class="highlight"><p class="lab">Idea central</p><p>...</p></div>` — recuadro
+  amarillo lleno, para una idea destacada (más "fuerte" visualmente que `.box`).
+- `<span class="source-tag renzulli">...</span>` — insignia chica para marcar de
+  dónde viene una afirmación citada en el texto. Variantes de color:
+  `renzulli` (celeste), `davidson` (amarillo), `nagc` (rojo), `imagina` (azul
+  oscuro) — se pueden agregar más variantes si hace falta otra fuente.
+- `<table>...</table>` — tabla normal (`<tr>`, `<th>`, `<td>`), ya viene con estilo
+  de la marca (filas alternadas, encabezado oscuro). Mirá
+  `articulos/content/interes-intenso-en-un-tema.html` como ejemplo.
+- `<details class="faq"><summary>Pregunta</summary><p>Respuesta</p></details>` —
+  acordeón de preguntas frecuentes (se abre/cierra solo al hacer click, sin
+  JavaScript extra).
+
+Ejemplo completo de estos últimos cuatro:
+`articulos/content/interes-intenso-en-un-tema.html`.
 
 ### Documentos descargables (PDF, checklists, etc.) con suscripción
 
@@ -74,6 +89,24 @@ Esto es automático, ya está armado en `script.js` — solo hay que usar este H
   suscribe), pero no es una traba de seguridad real — alguien que busque el link
   del PDF directamente en el código igual podría acceder. Para el uso que le
   estamos dando (captar suscriptores a cambio de material gratuito) alcanza.
+
+**Si un recurso tiene más de un formato** (por ejemplo Word y PDF), no hace
+falta `data-download`/`data-download-label`: se escriben los links a mano,
+ocultos con `hidden`, y aparecen todos juntos al desbloquear la tarjeta:
+
+```html
+<div class="resource-card">
+  <span class="resource-tag">Para familias</span>
+  <h4>Título del recurso</h4>
+  <p>Descripción corta.</p>
+  <form class="resource-gate">
+    <input type="email" placeholder="tu@email.com" required />
+    <button type="submit">Suscribirme y descargar</button>
+  </form>
+  <a class="btn-download resource-download-link" href="/recursos/archivo.docx" target="_blank" rel="noopener noreferrer" hidden>Descargar en Word</a>
+  <a class="btn-download resource-download-link" href="/recursos/archivo.pdf" target="_blank" rel="noopener noreferrer" hidden>Descargar en PDF</a>
+</div>
+```
 
 ## 2. Agregar la entrada en data/articles.json
 

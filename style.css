@@ -1091,6 +1091,126 @@ section {
   margin-top: 4px;
 }
 
+.article-body .resource-download-link[hidden] {
+  display: none;
+}
+
+.article-body .resource-download-link + .resource-download-link {
+  margin-left: 8px;
+}
+
+.article-body .box .lab,
+.article-body .highlight .lab {
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin: 0 0 8px;
+}
+
+.article-body .highlight {
+  background: var(--yellow);
+  color: var(--navy);
+  border-radius: var(--radius);
+  padding: 22px 26px;
+  margin: 0 0 24px;
+}
+
+.article-body .highlight p:last-child {
+  margin-bottom: 0;
+  font-size: 1.1rem;
+}
+
+.source-tag {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 2px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+  margin: 0 2px;
+}
+
+.source-tag.renzulli {
+  background: var(--teal);
+  color: var(--navy);
+}
+
+.source-tag.davidson {
+  background: var(--yellow);
+  color: var(--navy);
+}
+
+.source-tag.nagc {
+  background: var(--coral);
+  color: #fff;
+}
+
+.source-tag.imagina {
+  background: var(--navy);
+  color: #fff;
+}
+
+.article-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 24px;
+  font-size: 0.9rem;
+}
+
+.article-body th {
+  background: var(--navy);
+  color: #fff;
+  text-align: left;
+  padding: 10px 14px;
+}
+
+.article-body td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--lavender-dark);
+  vertical-align: top;
+}
+
+.article-body tr:nth-child(even) td {
+  background: var(--lavender);
+}
+
+.article-body details.faq {
+  background: #fff;
+  border: 2px solid var(--lavender-dark);
+  border-radius: var(--radius);
+  padding: 4px 20px;
+  margin: 0 0 12px;
+}
+
+.article-body details.faq summary {
+  cursor: pointer;
+  font-weight: 700;
+  padding: 14px 0;
+  list-style: none;
+  color: var(--navy);
+}
+
+.article-body details.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.article-body details.faq summary::before {
+  content: "+ ";
+  color: var(--coral);
+}
+
+.article-body details.faq[open] summary::before {
+  content: "\2013 ";
+}
+
+.article-body details.faq p {
+  margin: 0 0 14px;
+}
+
 .article-body .warning {
   background: var(--pink-light);
   border-left: 6px solid var(--coral);

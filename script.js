@@ -95,16 +95,24 @@ document.querySelectorAll(".subscribe-form").forEach((form) => {
     const gate = card.querySelector(".resource-gate");
     if (gate) gate.hidden = true;
 
-    let link = card.querySelector(".resource-download-link");
-    if (!link) {
-      link = document.createElement("a");
-      link.className = "btn-download resource-download-link";
-      link.href = card.dataset.download;
-      link.target = "_blank";
-      link.rel = "noopener noreferrer";
-      link.textContent = card.dataset.downloadLabel || "Descargar";
-      card.appendChild(link);
+    // Si la tarjeta ya trae uno o más links de descarga escritos a mano
+    // (por ejemplo, Word + PDF), simplemente se muestran.
+    const existentes = card.querySelectorAll(".resource-download-link");
+    if (existentes.length) {
+      existentes.forEach((link) => {
+        link.hidden = false;
+      });
+      return;
     }
+
+    // Si no, se arma uno solo a partir de data-download (caso simple).
+    const link = document.createElement("a");
+    link.className = "btn-download resource-download-link";
+    link.href = card.dataset.download;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.textContent = card.dataset.downloadLabel || "Descargar";
+    card.appendChild(link);
     link.hidden = false;
   }
 
@@ -136,7 +144,7 @@ document.querySelectorAll(".subscribe-form").forEach((form) => {
   }
 
   function initResourceGates(root) {
-    (root || document).querySelectorAll(".resource-card[data-download]").forEach((card) => {
+    (root || document).querySelectorAll(".resource-card").forEach((card) => {
       if (card.dataset.gateInit) return;
       card.dataset.gateInit = "1";
 
@@ -159,7 +167,7 @@ document.querySelectorAll(".subscribe-form").forEach((form) => {
         // Desbloquea esta tarjeta y también cualquier otra que ya esté en
         // la página (por ejemplo, otro documento más abajo), sin esperar a
         // que se recargue la página.
-        document.querySelectorAll(".resource-card[data-download]").forEach(mostrarDescarga);
+        document.querySelectorAll(".resource-card").forEach(mostrarDescarga);
       });
     });
   }
