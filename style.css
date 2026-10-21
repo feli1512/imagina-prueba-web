@@ -925,6 +925,22 @@ section {
   margin-top: 0;
 }
 
+.article-body .card-grid .card .ic {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: var(--lavender);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.article-body .card-grid .card .ic svg {
+  width: 40px;
+  height: 40px;
+}
+
 .article-body .card-grid .card ul {
   margin: 0;
   padding: 0;
