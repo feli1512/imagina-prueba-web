@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "nombre": "Alejandra",
+    "rol": "Madre",
+    "comentario": "Como familia valoramos el cambio positivo que ha tenido nuestra hija: logró mayor autonomía, seguridad en la clase y mejor organización. Hoy sabe qué herramientas le sirven para aprender mejor; le encanta el kit imprimible e incorporó técnicas para la exposición oral, la lectura y la organización de sus tareas diarias. Lo que aprende lo comparte con nosotros y lo practica. ¡Venimos muy bien!"
+  },
+  {
+    "nombre": "Ana Lucía",
+    "rol": "Colega",
+    "comentario": "Desde la experiencia compartida, relacionada con la realización de un taller sobre Altas Habilidades/Superdotación para profesionales de áreas afines a la educación, destaco el compromiso y el profesionalismo con el que se llevó adelante la propuesta. Al ser un taller para diversas áreas de profesionales, Mariana tuvo una apertura y la consideración necesaria para que el taller sea accesible desde las temáticas abordadas para todos."
+  },
+  {
+    "nombre": "Martín",
+    "rol": "Estudiante",
+    "comentario": "A partir de una consulta de orientación vocacional, descubrí mis habilidades y mi potencial. Fue una experiencia maravillosa en la que disfruté de conocerme un poco más, de conocer cómo mi persona aprendía, qué tipo de soluciones daba frente a problemas planteados y cómo actuaba frente a grandes desafíos. Reconocer estas habilidades logró en mí encontrar un propósito personal y aprender a aprender."
+  }
+]
