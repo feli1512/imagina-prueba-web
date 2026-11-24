@@ -185,3 +185,24 @@ document.querySelectorAll(".subscribe-form").forEach((form) => {
     });
   }
 })();
+
+// Preguntas frecuentes: filtrar por tema
+(function () {
+  const faq = document.getElementById("preguntas-frecuentes");
+  if (!faq) return;
+
+  const buttons = faq.querySelectorAll(".faq-filter");
+  const items = faq.querySelectorAll(".faq-item");
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const filter = button.dataset.filter;
+      buttons.forEach((b) => b.setAttribute("aria-pressed", String(b === button)));
+      items.forEach((item) => {
+        item.hidden = filter !== "todas" && item.dataset.category !== filter;
+      });
+    });
+  });
+
+  faq.classList.add("js-ready");
+})();
